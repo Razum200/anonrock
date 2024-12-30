@@ -18,26 +18,32 @@
     };
   </script>
   <style>
-    body {
-      display: flex;
-      flex-direction: column;
-      align-items: center; /* Центрирование по горизонтали */
-      justify-content: center; /* Центрирование по вертикали */
-      min-height: 100vh; /* Высота окна браузера */
-      margin: 0; /* Убираем отступы */
-      font-family: Arial, sans-serif; /* Шрифт для всей страницы */
-      background-color: #121212; /* Тёмный фон (для эффекта игры) */
-      color: white; /* Белый текст */
-    }
-  
-    canvas {
-      display: block;
-    }
-  
-    h1 {
-      margin: 20px 0; /* Отступы вокруг заголовка */
-    }
-  </style>
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Центрирование по горизонтали */
+    justify-content: center; /* Центрирование по вертикали */
+    min-height: 100vh; /* Высота окна браузера */
+    margin: 0; /* Убираем отступы */
+    font-family: Arial, sans-serif; /* Шрифт для всей страницы */
+    background-color: #121212; /* Тёмный фон (для эффекта игры) */
+    color: white; /* Белый текст */
+  }
+
+  canvas {
+    display: block;
+  }
+
+  h1 {
+    position: fixed; /* Фиксируем текст на экране */
+    top: 10px; /* Смещаем текст вниз от верхнего края */
+    left: 50%; /* Центрируем по горизонтали */
+    transform: translateX(-50%); /* Выравниваем текст по центру */
+    margin: 0; /* Убираем дополнительные отступы */
+    font-size: 24px; /* Размер текста */
+    z-index: 100; /* Поверх всего остального */
+  }
+</style>
 </head>
 <body>
   <h1>АНОН РОК АЛЬФА</h1>
