@@ -7,31 +7,27 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
   <script src="sketch.js" defer></script> <!-- Подключаем скрипт игры -->
   <script>
-    // Инициализируем Telegram Web App
     window.onload = () => {
       if (window.Telegram && Telegram.WebApp) {
-        Telegram.WebApp.ready(); // Сообщаем Telegram, что приложение готово
-        Telegram.WebApp.expand(); // Расширяем приложение на весь экран
-      } else {
-        console.error("Telegram Web App API не доступен.");
+        Telegram.WebApp.ready();
+        Telegram.WebApp.expand();
       }
     };
   </script>
   <style>
-    /* Основной стиль страницы */
     body {
       display: flex;
       flex-direction: column;
-      align-items: center; /* Центрирование по горизонтали */
-      justify-content: center; /* Центрирование по вертикали */
-      min-height: 100vh; /* Высота окна браузера */
-      margin: 0; /* Убираем отступы */
-      font-family: Arial, sans-serif; /* Шрифт для всей страницы */
-      background: linear-gradient(135deg, #1e1e2f, #121212); /* Футуристичный градиент */
-      background-size: 400% 400%; /* Размер для анимации */
-      animation: gradientAnimation 10s ease infinite; /* Анимация плавного перелива */
-      color: white; /* Белый текст */
-      overflow: hidden; /* Скрываем выходящие за пределы элементы */
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #1e1e2f, #121212);
+      background-size: 400% 400%;
+      animation: gradientAnimation 10s ease infinite;
+      color: white;
+      overflow: hidden;
     }
 
     @keyframes gradientAnimation {
@@ -46,67 +42,26 @@
       }
     }
 
-    /* Заголовок */
-    h1 {
-      position: fixed; /* Фиксируем текст на экране */
-      top: 10px; /* Смещаем текст вниз от верхнего края */
-      left: 50%; /* Центрируем по горизонтали */
-      transform: translateX(-50%); /* Выравниваем текст по центру */
-      margin: 0; /* Убираем дополнительные отступы */
-      font-size: 28px; /* Увеличиваем размер текста */
-      font-weight: bold; /* Жирный текст */
-      text-transform: uppercase; /* Преобразуем текст в верхний регистр */
-      text-align: center; /* Центрируем текст */
-      color: #50c8ff; /* Яркий голубой цвет */
-      z-index: 100; /* Поверх всего остального */
-      white-space: nowrap; /* Убираем перенос текста */
-    }
-
-    /* Искры */
-    .spark {
-      position: absolute;
-      width: 4px;
-      height: 4px;
-      background-color: rgba(255, 255, 255, 0.8);
-      border-radius: 50%;
-      animation: sparkle 2s infinite;
-      /* Начальное положение в пределах окружности радиусом 20px */
-      top: calc(50% + calc(var(--offsetY) * 20px));
-      left: calc(50% + calc(var(--offsetX) * 20px));
-    }
-
-    @keyframes sparkle {
-      0% {
-        transform: scale(0.5); /* Размер начальной искры */
-        opacity: 1;
-      }
-      100% {
-        transform: translate(calc(200px - 400px * var(--randX)), calc(200px - 400px * var(--randY))) scale(0); /* Движение наружу */
-        opacity: 0; /* Угасание */
-      }
-    }
-
-    /* Стили для компактного футуристичного счётчика */
     .counter-box {
       position: fixed;
-      top: 20px; /* Расположим в правом верхнем углу */
-      right: 20px; /* Расположим в правом верхнем углу */
-      width: 80px; /* Ширина контейнера */
-      height: 30px; /* Высота контейнера */
+      top: 20px;
+      right: 20px;
+      width: 80px;
+      height: 30px;
       display: flex;
-      justify-content: center; /* Центрируем текст по горизонтали */
-      align-items: center; /* Центрируем текст по вертикали */
-      background: white; /* Белый фон */
-      border-radius: 8px; /* Закруглённые углы */
-      box-shadow: 0 0 5px rgba(50, 200, 255, 0.8); /* Лёгкое свечение */
-      animation: glow 1.5s infinite; /* Анимация свечения */
-      z-index: 100; /* Поверх всего */
+      justify-content: center;
+      align-items: center;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(50, 200, 255, 0.8);
+      animation: glow 1.5s infinite;
+      z-index: 100;
     }
 
     .counter-box span {
-      font-size: 14px; /* Размер шрифта */
-      color: black; /* Чёрный текст */
-      font-weight: bold; /* Жирный текст */
+      font-size: 14px;
+      color: black;
+      font-weight: bold;
     }
 
     @keyframes glow {
@@ -120,20 +75,53 @@
         box-shadow: 0 0 5px rgba(50, 200, 255, 0.8);
       }
     }
+
+    h1 {
+      position: fixed;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      margin: 0;
+      font-size: 28px;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-align: center;
+      color: #50c8ff;
+      z-index: 100;
+      white-space: nowrap;
+    }
+
+    .spark {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      animation: sparkle 2s infinite;
+      top: calc(50% + calc(var(--offsetY) * 20px));
+      left: calc(50% + calc(var(--offsetX) * 20px));
+    }
+
+    @keyframes sparkle {
+      0% {
+        transform: scale(0.5);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(calc(200px - 400px * var(--randX)), calc(200px - 400px * var(--randY))) scale(0);
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 <body>
-  <div id="counter-container">
+  <div class="counter-box">
     <span id="counter">0.00000000</span>
   </div>
   <h1>АНОН РОКС АЛЬФА</h1>
-  <!-- Искры -->
-  <div class="spark" style="--randX: 0.2; --randY: 0.7; --offsetX: 0.5; --offsetY: 0.5; animation-delay: 0s;"></div>
-  <!-- Искры -->
   <div class="spark" style="--randX: 0.2; --randY: 0.7; --offsetX: 0.5; --offsetY: 0.5; animation-delay: 0s;"></div>
   <div class="spark" style="--randX: 0.8; --randY: 0.3; --offsetX: -0.5; --offsetY: 0.5; animation-delay: 0.5s;"></div>
   <div class="spark" style="--randX: 0.6; --randY: 0.4; --offsetX: 0.5; --offsetY: -0.5; animation-delay: 1s;"></div>
   <div class="spark" style="--randX: 0.1; --randY: 0.9; --offsetX: -0.5; --offsetY: -0.5; animation-delay: 1.5s;"></div>
-  <div class="spark" style="--randX: 0.4; --randY: 0.6; --offsetX: 0.3; --offsetY: 0.3; animation-delay: 2s;"></div>
 </body>
 </html>
