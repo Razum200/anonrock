@@ -12,7 +12,7 @@ let pickaxeImage; // Переменная для изображения кирк
 let canvas; // Для привязки кнопок к холсту
 
 function preload() {
-  backgroundImage = loadImage('monstro.jpg'); // Фон
+  backgroundImage = loadImage('monstro.png'); // Фон
   oreImage = loadImage('8.png'); // Частицы
   pickaxeImage = loadImage('pixaxe.png'); // Кирка
 }
