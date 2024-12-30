@@ -18,6 +18,7 @@
     };
   </script>
   <style>
+    /* Основной стиль страницы */
     body {
       display: flex;
       flex-direction: column;
@@ -45,21 +46,55 @@
       }
     }
 
+    /* Заголовок */
     h1 {
-      position: fixed; /* Фиксируем заголовок */
-      top: 20px; /* Отступ от верхнего края */
+      position: fixed; /* Фиксируем текст на экране */
+      top: 10px; /* Смещаем текст вниз от верхнего края */
       left: 50%; /* Центрируем по горизонтали */
-      transform: translateX(-50%); /* Центрируем текст относительно точки привязки */
-      margin: 0; /* Убираем отступы */
-      font-size: 24px; /* Размер шрифта */
+      transform: translateX(-50%); /* Выравниваем текст по центру */
+      margin: 0; /* Убираем дополнительные отступы */
+      font-size: 28px; /* Увеличиваем размер текста */
       font-weight: bold; /* Жирный текст */
       text-transform: uppercase; /* Преобразуем текст в верхний регистр */
+      text-align: center; /* Центрируем текст */
       color: #50c8ff; /* Яркий голубой цвет */
-      z-index: 100; /* Поверх остальных элементов */
+      z-index: 100; /* Поверх всего остального */
+      white-space: nowrap; /* Убираем перенос текста */
+    }
+
+    /* Искры */
+    .spark {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      animation: sparkle 2s infinite;
+    }
+
+    @keyframes sparkle {
+      0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 0.5;
+      }
+      50% {
+        transform: translateY(-20px) scale(1.2);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-50px) scale(0.5);
+        opacity: 0;
+      }
     }
   </style>
 </head>
 <body>
   <h1>АНОН РОКС АЛЬФА</h1>
+  <!-- Искры -->
+  <div class="spark" style="top: 70%; left: 20%; animation-delay: 0s;"></div>
+  <div class="spark" style="top: 60%; left: 50%; animation-delay: 0.5s;"></div>
+  <div class="spark" style="top: 80%; left: 70%; animation-delay: 1s;"></div>
+  <div class="spark" style="top: 50%; left: 90%; animation-delay: 1.5s;"></div>
+  <div class="spark" style="top: 40%; left: 30%; animation-delay: 2s;"></div>
 </body>
 </html>
