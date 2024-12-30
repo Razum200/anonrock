@@ -89,7 +89,7 @@ function draw() {
 
 function drawFuturisticCounter() {
   const x = width / 1.5; // Центр по горизонтали
-  const y = 20; // Расстояние от верхнего края
+  const y = 22; // Расстояние от верхнего края
 
   // Анимация рамки
   strokeWeight(3);
@@ -100,7 +100,7 @@ function drawFuturisticCounter() {
 
   // Текст "АНОНимная руда"
   noStroke();
-  fill(255); // Белый текст
+  fill(#4d4123); // Желтый цвет
   textSize(20); // Увеличенный размер текста
   textAlign(CENTER, CENTER);
   text('АНОНимная руда', x, y - 10);
