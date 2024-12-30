@@ -70,16 +70,19 @@
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 50%;
   animation: sparkle 2s infinite;
+  /* Начальное положение в пределах окружности радиусом 20px */
+  top: calc(50% + calc(var(--offsetY) * 20px));
+  left: calc(50% + calc(var(--offsetX) * 20px));
 }
 
 @keyframes sparkle {
   0% {
-    transform: translate(12, 16) scale(0.9); /* Начинаем с центра */
+    transform: scale(0.5); /* Размер начальной искры */
     opacity: 1;
   }
   100% {
-    transform: translate(calc(200px - 400px * var(--randX)), calc(200px - 400px * var(--randY))) scale(0); /* Двигаемся наружу */
-    opacity: 0; /* Угасаем */
+    transform: translate(calc(200px - 400px * var(--randX)), calc(200px - 400px * var(--randY))) scale(0); /* Движение наружу */
+    opacity: 0; /* Угасание */
   }
 }
   </style>
@@ -88,11 +91,10 @@
   <h1>АНОН РОКС АЛЬФА</h1>
   <!-- Искры -->
   <div class="spark" style="--randX: 0.2; --randY: 0.7; animation-delay: 0s;"></div>
-<div class="spark" style="--randX: 0.8; --randY: 0.3; animation-delay: 0.5s;"></div>
-<div class="spark" style="--randX: 0.6; --randY: 0.4; animation-delay: 1s;"></div>
-<div class="spark" style="--randX: 0.1; --randY: 0.9; animation-delay: 1.5s;"></div>
-<div class="spark" style="--randX: 0.4; --randY: 0.6; animation-delay: 2s;"></div>
-<div class="spark" style="--randX: 0.5; --randY: 0.5; animation-delay: 2.5s;"></div>
-<div class="spark" style="--randX: 0.3; --randY: 0.8; animation-delay: 3s;"></div>
+  <div class="spark" style="--randX: 0.2; --randY: 0.7; --offsetX: 0.5; --offsetY: 0.5; animation-delay: 0s;"></div>
+  <div class="spark" style="--randX: 0.8; --randY: 0.3; --offsetX: -0.5; --offsetY: 0.5; animation-delay: 0.5s;"></div>
+  <div class="spark" style="--randX: 0.6; --randY: 0.4; --offsetX: 0.5; --offsetY: -0.5; animation-delay: 1s;"></div>
+  <div class="spark" style="--randX: 0.1; --randY: 0.9; --offsetX: -0.5; --offsetY: -0.5; animation-delay: 1.5s;"></div>
+  <div class="spark" style="--randX: 0.4; --randY: 0.6; --offsetX: 0.3; --offsetY: 0.3; animation-delay: 2s;"></div>
 </body>
 </html>
