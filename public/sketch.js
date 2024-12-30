@@ -100,7 +100,7 @@ function drawFuturisticCounter() {
 
   // Текст "АНОНимная руда"
   noStroke();
-  fill(#4d4123); // Желтый цвет
+  fill(255, 255, 0); // Желтый цвет
   textSize(20); // Увеличенный размер текста
   textAlign(CENTER, CENTER);
   text('АНОНимная руда', x, y - 10);
