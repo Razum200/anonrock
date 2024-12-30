@@ -64,31 +64,70 @@
 
     /* Искры */
     .spark {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 50%;
-  animation: sparkle 2s infinite;
-  /* Начальное положение в пределах окружности радиусом 20px */
-  top: calc(50% + calc(var(--offsetY) * 20px));
-  left: calc(50% + calc(var(--offsetX) * 20px));
-}
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      animation: sparkle 2s infinite;
+      /* Начальное положение в пределах окружности радиусом 20px */
+      top: calc(50% + calc(var(--offsetY) * 20px));
+      left: calc(50% + calc(var(--offsetX) * 20px));
+    }
 
-@keyframes sparkle {
-  0% {
-    transform: scale(0.5); /* Размер начальной искры */
-    opacity: 1;
-  }
-  100% {
-    transform: translate(calc(200px - 400px * var(--randX)), calc(200px - 400px * var(--randY))) scale(0); /* Движение наружу */
-    opacity: 0; /* Угасание */
-  }
-}
+    @keyframes sparkle {
+      0% {
+        transform: scale(0.5); /* Размер начальной искры */
+        opacity: 1;
+      }
+      100% {
+        transform: translate(calc(200px - 400px * var(--randX)), calc(200px - 400px * var(--randY))) scale(0); /* Движение наружу */
+        opacity: 0; /* Угасание */
+      }
+    }
+
+    /* Стили для компактного футуристичного счётчика */
+    .counter-box {
+      position: fixed;
+      top: 20px; /* Расположим в правом верхнем углу */
+      right: 20px; /* Расположим в правом верхнем углу */
+      width: 80px; /* Ширина контейнера */
+      height: 30px; /* Высота контейнера */
+      display: flex;
+      justify-content: center; /* Центрируем текст по горизонтали */
+      align-items: center; /* Центрируем текст по вертикали */
+      background: white; /* Белый фон */
+      border-radius: 8px; /* Закруглённые углы */
+      box-shadow: 0 0 5px rgba(50, 200, 255, 0.8); /* Лёгкое свечение */
+      animation: glow 1.5s infinite; /* Анимация свечения */
+      z-index: 100; /* Поверх всего */
+    }
+
+    .counter-box span {
+      font-size: 14px; /* Размер шрифта */
+      color: black; /* Чёрный текст */
+      font-weight: bold; /* Жирный текст */
+    }
+
+    @keyframes glow {
+      0% {
+        box-shadow: 0 0 5px rgba(50, 200, 255, 0.8);
+      }
+      50% {
+        box-shadow: 0 0 15px rgba(50, 200, 255, 1);
+      }
+      100% {
+        box-shadow: 0 0 5px rgba(50, 200, 255, 0.8);
+      }
+    }
   </style>
 </head>
 <body>
   <h1>АНОН РОКС АЛЬФА</h1>
+  <!-- Счётчик -->
+  <div class="counter-box">
+    <span id="counter">0.00000000</span>
+  </div>
   <!-- Искры -->
   <div class="spark" style="--randX: 0.2; --randY: 0.7; --offsetX: 0.5; --offsetY: 0.5; animation-delay: 0s;"></div>
   <div class="spark" style="--randX: 0.8; --randY: 0.3; --offsetX: -0.5; --offsetY: 0.5; animation-delay: 0.5s;"></div>
