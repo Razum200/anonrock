@@ -7,10 +7,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
   <script src="sketch.js" defer></script> <!-- Подключаем скрипт игры -->
   <script>
-    // Убедимся, что Telegram API вызывается после загрузки DOM
+    // Инициализируем Telegram Web App
     window.onload = () => {
       if (window.Telegram && Telegram.WebApp) {
+        Telegram.WebApp.ready(); // Сообщаем Telegram, что приложение готово
         Telegram.WebApp.expand(); // Расширяем приложение на весь экран
+      } else {
+        console.error("Telegram Web App API не доступен.");
       }
     };
   </script>
