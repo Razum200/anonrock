@@ -3,9 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anon Rock</title>
+  <title>Anon Rocks</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
   <script src="sketch.js" defer></script> <!-- Подключаем скрипт игры -->
+  <script>
+    // Проверяем, что Telegram Web Apps API доступен
+    if (window.Telegram && Telegram.WebApp) {
+      Telegram.WebApp.expand(); // Расширяем приложение на весь экран
+    }
+  </script>
   <style>
     body {
       display: flex;
@@ -18,17 +24,18 @@
       background-color: #121212; /* Тёмный фон (для эффекта игры) */
       color: white; /* Белый текст */
     }
-  
+
     canvas {
       display: block;
     }
-  
+
     h1 {
       margin: 20px 0; /* Отступы вокруг заголовка */
     }
   </style>
 </head>
 <body>
-  <h1>Фан Заглушка</h1>
+  <h1>Добро пожаловать в Anon Rocks!</h1>
+  <p>Игра автоматически растягивается на весь экран.</p>
 </body>
 </html>
