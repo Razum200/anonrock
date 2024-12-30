@@ -18,34 +18,76 @@
     };
   </script>
   <style>
-  body {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Центрирование по горизонтали */
-    justify-content: center; /* Центрирование по вертикали */
-    min-height: 100vh; /* Высота окна браузера */
-    margin: 0; /* Убираем отступы */
-    font-family: Arial, sans-serif; /* Шрифт для всей страницы */
-    background-color: #fff; /* Тёмный фон (для эффекта игры) */
-    color: white; /* Белый текст */
-  }
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Центрирование по горизонтали */
+      justify-content: center; /* Центрирование по вертикали */
+      min-height: 100vh; /* Высота окна браузера */
+      margin: 0; /* Убираем отступы */
+      font-family: Arial, sans-serif; /* Шрифт для всей страницы */
+      background: linear-gradient(135deg, #1e1e2f, #121212); /* Футуристичный градиент */
+      background-size: 400% 400%; /* Размер для анимации */
+      animation: gradientAnimation 10s ease infinite; /* Анимация плавного перелива */
+      color: white; /* Белый текст */
+      overflow: hidden; /* Скрываем выходящие за пределы элементы */
+    }
 
-  canvas {
-    display: block;
-  }
+    @keyframes gradientAnimation {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
 
-  h1 {
-    position: fixed; /* Фиксируем текст на экране */
-    top: 35px; /* Смещаем текст вниз от верхнего края */
-    left: 30%; /* Центрируем по горизонтали */
-    transform: translateX(-20%); /* Выравниваем текст по центру */
-    margin: 0; /* Убираем дополнительные отступы */
-    font-size: 24px; /* Размер текста */
-    z-index: 100; /* Поверх всего остального */
-  }
-</style>
+    /* Искры */
+    .spark {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      animation: sparkle 2s infinite;
+    }
+
+    @keyframes sparkle {
+      0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 0.5;
+      }
+      50% {
+        transform: translateY(-20px) scale(1.2);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-50px) scale(0.5);
+        opacity: 0;
+      }
+    }
+
+    h1 {
+      position: fixed; /* Фиксируем текст на экране */
+      top: 10px; /* Смещаем текст вниз от верхнего края */
+      left: 50%; /* Центрируем по горизонтали */
+      transform: translateX(-50%); /* Выравниваем текст по центру */
+      margin: 0; /* Убираем дополнительные отступы */
+      font-size: 24px; /* Размер текста */
+      z-index: 100; /* Поверх всего остального */
+    }
+  </style>
 </head>
 <body>
   <h1>АНОН РОКС АЛЬФА</h1>
+  <!-- Искры -->
+  <div class="spark" style="top: 70%; left: 20%; animation-delay: 0s;"></div>
+  <div class="spark" style="top: 60%; left: 50%; animation-delay: 0.5s;"></div>
+  <div class="spark" style="top: 80%; left: 70%; animation-delay: 1s;"></div>
+  <div class="spark" style="top: 50%; left: 90%; animation-delay: 1.5s;"></div>
+  <div class="spark" style="top: 40%; left: 30%; animation-delay: 2s;"></div>
 </body>
 </html>
