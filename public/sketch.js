@@ -42,13 +42,11 @@ function setup() {
 function draw() {
   background(backgroundImage); // Рисуем фон
 
-  // Обновляем счётчик руды
+  // Обновляем значение счётчика через DOM
   if (isMining) {
-    anonOreCount += orePerSecond / frameRate();
+    anonOreCount += orePerSecond / frameRate(); // Увеличиваем количество руды
+    document.getElementById('counter').innerText = anonOreCount.toFixed(8); // Обновляем текст счётчика
   }
-
-  // Рисуем счётчик руды
-  drawFuturisticCounter();
 
   // Кирка работает, если добыча активна
   if (isMining) {
@@ -74,7 +72,7 @@ function draw() {
 
     // Добавление частиц
     if (frameCount % 60 === 0) {
-      oreParticles.push(new Ore(width / 2, height / 2));
+      oreParticles.push(new Ore(width / 2, height / 2)); // Генерация новых частиц
       miningProgress = true;
       rotationSpeed = 0.3;
     }
@@ -86,7 +84,6 @@ function draw() {
     ore.display();
   }
 }
-
 function drawFuturisticCounter() {
   const x = width / 1.5; // Центр по горизонтали
   const y = 30; // Расстояние от верхнего края
