@@ -88,20 +88,27 @@ function draw() {
 }
 
 function drawFuturisticCounter() {
+  const x = width / 2; // Центр по горизонтали
+  const y = 50; // Расстояние от верхнего края
+
+  // Анимация рамки
+  strokeWeight(3);
+  stroke(50, 200, 255, sin(frameCount * 0.1) * 128 + 128); // Пульсирующий цвет
   noFill();
-  strokeWeight(2);
-  stroke(50, 200, 255, 150);
-  rect(width - 180, 10, 170, 50, 10);
+  rectMode(CENTER);
+  rect(x, y, 250, 60, 15); // Рамка с закруглёнными углами
 
+  // Текст "АНОНимная руда"
   noStroke();
-  fill(205);
-  textSize(14);
+  fill(255); // Белый текст
+  textSize(20); // Увеличенный размер текста
   textAlign(CENTER, CENTER);
-  text('АНОНимная руда', width - 95, 25);
+  text('АНОНимная руда', x, y - 10);
 
-  fill(200, 255, 200);
-  textSize(16);
-  text(`${anonOreCount.toFixed(8)}`, width - 95, 45);
+  // Отображение количества руды
+  fill(50, 255, 150); // Зелёный текст
+  textSize(24); // Крупнее для выделения
+  text(`${anonOreCount.toFixed(8)}`, x, y + 20);
 }
 
 function styleFuturisticButton(button, x, y) {
