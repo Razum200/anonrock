@@ -7,6 +7,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
   <script src="sketch.js" defer></script> <!-- Подключаем скрипт игры -->
   <script>
+    // Инициализируем Telegram Web App
     window.onload = () => {
       if (window.Telegram && Telegram.WebApp) {
         Telegram.WebApp.ready();
@@ -42,43 +43,6 @@
       }
     }
 
-    .counter-box {
-      position: fixed;
-      top: 50px;
-      right: 10px;
-      width: 65px;
-      height: 300px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: white;
-      border-radius: 20px;
-      box-shadow: 0 0 25px rgba(50, 200, 255, 0.8);
-      animation: glow 1.5s infinite;
-      z-index: 100;
-    }
-
-    .counter-box span {
-      font-size: 30px; /* Размер шрифта */
-  color: black; /* Чёрный текст */
-  font-weight: bold;
-  font-family: monospace; /* Моноширинный шрифт для цифрового вида */
-  writing-mode: vertical-rl; /* Текст отображается вертикально */
-  text-align: center; /* Центрируем текст */
-    }
-
-    @keyframes glow {
-      0% {
-        box-shadow: 0 0 5px rgba(50, 200, 255, 0.8);
-      }
-      50% {
-        box-shadow: 0 0 15px rgba(50, 200, 255, 1);
-      }
-      100% {
-        box-shadow: 0 0 5px rgba(50, 200, 255, 0.8);
-      }
-    }
-
     h1 {
       position: fixed;
       top: 10px;
@@ -94,25 +58,41 @@
       white-space: nowrap;
     }
 
-    .spark {
-      position: absolute;
-      width: 4px;
-      height: 4px;
-      background-color: rgba(255, 255, 255, 0.8);
-      border-radius: 50%;
-      animation: sparkle 2s infinite;
-      top: calc(50% + calc(var(--offsetY) * 20px));
-      left: calc(50% + calc(var(--offsetX) * 20px));
+    .counter-box {
+      position: fixed;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(50, 200, 255, 0.8);
+      animation: glow 1.5s infinite;
+      z-index: 100;
+      padding: 10px;
     }
 
-    @keyframes sparkle {
+    .counter-box span {
+      font-size: 24px;
+      color: black;
+      font-weight: bold;
+      font-family: monospace;
+      text-align: center;
+    }
+
+    @keyframes glow {
       0% {
-        transform: scale(0.5);
-        opacity: 1;
+        box-shadow: 0 0 10px rgba(50, 200, 255, 0.8);
+      }
+      50% {
+        box-shadow: 0 0 20px rgba(50, 200, 255, 1);
       }
       100% {
-        transform: translate(calc(200px - 400px * var(--randX)), calc(200px - 400px * var(--randY))) scale(0);
-        opacity: 0;
+        box-shadow: 0 0 10px rgba(50, 200, 255, 0.8);
       }
     }
   </style>
@@ -122,9 +102,5 @@
     <span id="counter">0.00000000</span>
   </div>
   <h1>АНОН РОКС АЛЬФА</h1>
-  <div class="spark" style="--randX: 0.2; --randY: 0.7; --offsetX: 0.5; --offsetY: 0.5; animation-delay: 0s;"></div>
-  <div class="spark" style="--randX: 0.8; --randY: 0.3; --offsetX: -0.5; --offsetY: 0.5; animation-delay: 0.5s;"></div>
-  <div class="spark" style="--randX: 0.6; --randY: 0.4; --offsetX: 0.5; --offsetY: -0.5; animation-delay: 1s;"></div>
-  <div class="spark" style="--randX: 0.1; --randY: 0.9; --offsetX: -0.5; --offsetY: -0.5; animation-delay: 1.5s;"></div>
 </body>
 </html>
