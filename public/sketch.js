@@ -88,8 +88,8 @@ function draw() {
 }
 
 function drawFuturisticCounter() {
-  const x = width / 1.5; // Центр по горизонтали
-  const y = 28; // Расстояние от верхнего края
+  const x = width / 1.6; // Центр по горизонтали
+  const y = 29; // Расстояние от верхнего края
 
   // Анимация рамки
   strokeWeight(3);
@@ -107,7 +107,7 @@ function drawFuturisticCounter() {
 
   // Отображение количества руды
   fill(50, 255, 150); // Зелёный текст
-  textSize(24); // Крупнее для выделения
+  textSize(23); // Крупнее для выделения
   text(`${anonOreCount.toFixed(8)}`, x, y + 20);
 }
 
