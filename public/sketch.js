@@ -44,9 +44,9 @@ function draw() {
 
   // Обновляем значение счётчика через DOM
   if (isMining) {
-    anonOreCount += orePerSecond / frameRate(); // Увеличиваем количество руды
-    document.getElementById('counter').innerText = anonOreCount.toFixed(8); // Обновляем текст счётчика
-  }
+  anonOreCount += orePerSecond / frameRate(); // Увеличиваем значение руды
+  document.getElementById('counter').innerText = anonOreCount.toFixed(8); // Обновляем счётчик
+}
 
   // Кирка работает, если добыча активна
   if (isMining) {
