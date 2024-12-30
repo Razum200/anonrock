@@ -89,7 +89,7 @@ function draw() {
 
 function drawFuturisticCounter() {
   const x = width / 2; // Центр по горизонтали
-  const y = 50; // Расстояние от верхнего края
+  const y = 30; // Расстояние от верхнего края
 
   // Анимация рамки
   strokeWeight(3);
