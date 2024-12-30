@@ -88,8 +88,8 @@ function draw() {
 }
 
 function drawFuturisticCounter() {
-  const x = width / 2; // Центр по горизонтали
-  const y = 30; // Расстояние от верхнего края
+  const x = width / -2; // Центр по горизонтали
+  const y = -10; // Расстояние от верхнего края
 
   // Анимация рамки
   strokeWeight(3);
