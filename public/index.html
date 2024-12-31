@@ -44,24 +44,20 @@
     }
 
     .counter-box {
-      position: fixed;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 90%;
-      height: 50
-
-px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: rgba(255, 255, 255, 0.8);
-      border-radius: 15px;
-      box-shadow: 0 0 10px rgba(50, 200, 255, 0.8);
-      animation: glow 1.5s infinite;
-      z-index: 100;
-      padding: 10px;
-    }
+  position: absolute; /* Меняем с fixed на absolute */
+  bottom: 0;
+  width: 90%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(50, 200, 255, 0.8);
+  animation: glow 1.5s infinite;
+  z-index: 100;
+  padding: 10px;
+}
 
     .counter-box span {
       font-size: 24px;
