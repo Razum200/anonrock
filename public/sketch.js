@@ -109,7 +109,7 @@ class Ore {
     this.y = y;
     this.targetX = targetX; // Целевая точка
     this.targetY = targetY; // Целевая точка
-    this.size = random(6, 9); // Размер частиц руды
+    this.size = random(12, 20); // Размер частиц руды
     this.speedX = (targetX - x) / 60; // Скорость движения по X
     this.speedY = (targetY - y) / 60; // Скорость движения по Y
     this.alpha = 255; // Прозрачность
@@ -133,9 +133,8 @@ class Ore {
   }
 
   display() {
-    fill(255, 255, 255, this.alpha);
-    noStroke();
-    ellipse(this.x, this.y, this.size);
+    tint(255, this.alpha); // Добавляем прозрачность
+    image(oreImage, this.x, this.y, this.size, this.size); // Отображаем частицу
   }
 }
 
