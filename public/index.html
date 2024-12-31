@@ -3,9 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Anon Rock - игра с анимацией и счетчиком">
+  <meta name="keywords" content="игра, анимация, счетчик, Anon Rock">
+  <meta name="theme-color" content="#1e1e2f">
   <title>Anon Rock</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
-  <script src="sketch.js" defer></script> <!-- Подключаем скрипт игры -->
+  <script src="sketch.js" defer></script>
   <style>
     /* Основной стиль */
     body {
@@ -39,6 +42,8 @@
     .alpha-image {
       margin-top: 10px;
       width: 200px;
+      height: auto;
+      max-width: 100%;
     }
 
     /* Счётчик */
@@ -55,6 +60,8 @@
       padding: 10px;
       height: 50px;
       width: 90%;
+      max-width: 600px;
+      margin: 0 auto;
     }
 
     .counter-box span {
@@ -76,11 +83,42 @@
         box-shadow: 0 0 10px rgba(50, 200, 255, 0.8);
       }
     }
+
+    /* Адаптивность */
+    @media (max-width: 768px) {
+      .counter-box {
+        width: 80%;
+        height: 40px;
+      }
+
+      .counter-box span {
+        font-size: 20px;
+      }
+
+      .alpha-image {
+        width: 150px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .counter-box {
+        width: 70%;
+        height: 35px;
+      }
+
+      .counter-box span {
+        font-size: 18px;
+      }
+
+      .alpha-image {
+        width: 120px;
+      }
+    }
   </style>
 </head>
-<body>
-  <img src="alpha.png" alt="Anon Rocks Alpha" class="alpha-image">
-  <div class="counter-box" id="counter-container">
+<body role="document">
+  <img src="alpha.png" alt="Anon Rocks Alpha" class="alpha-image" loading="lazy">
+  <div class="counter-box" id="counter-container" role="status" aria-live="polite">
     <span id="counter">0.00000000</span>
   </div>
 </body>
