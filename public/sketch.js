@@ -41,13 +41,16 @@ function setup() {
 }
 
 function draw() {
-  background(backgroundImage); // Рисуем фон
+  background(backgroundImage); // Отображение фона
 
-  // Привязываем счётчик к нижней части фона
+  // Привязываем счётчик к нижней части холста
   const counterBox = document.querySelector('.counter-box');
   if (counterBox) {
-    const canvasBottom = canvas.elt.getBoundingClientRect().bottom; // Нижняя часть холста
-    counterBox.style.top = `${canvasBottom}px`; // Ставим счётчик на нижнюю границу холста
+    const canvasRect = canvas.elt.getBoundingClientRect(); // Получаем размеры холста
+    counterBox.style.position = 'absolute';
+    counterBox.style.top = `${canvasRect.bottom - counterBox.offsetHeight}px`; // Привязываем к нижней границе холста
+    counterBox.style.left = `${canvasRect.left}px`; // Центрируем горизонтально
+    counterBox.style.width = `${canvasRect.width}px`; // Растягиваем счётчик по ширине холста
   }
 
   // Обновляем значение счётчика
@@ -56,7 +59,7 @@ function draw() {
     document.querySelector('#counter').innerText = anonOreCount.toFixed(8); // Обновляем DOM
   }
 
-  // Кирка работает, если добыча активна
+  // Анимация кирки
   if (isMining) {
     push();
     translate(width / 2, height / 2);
@@ -65,7 +68,6 @@ function draw() {
     image(pickaxeImage, 0, 0, 150, 150);
     pop();
 
-    // Анимация движения кирки
     if (miningProgress) {
       pickaxeRotation += rotationSpeed;
       if (pickaxeRotation > 0) {
@@ -86,7 +88,7 @@ function draw() {
     }
   }
 
-  // Рисуем частицы
+  // Отображение частиц
   for (let ore of oreParticles) {
     ore.move();
     ore.display();
@@ -94,19 +96,13 @@ function draw() {
 }
 
 function generateOreParticles() {
-  const counterBox = document.querySelector('.counter-box'); // Используем существующий класс
-  if (!counterBox) {
-    console.error('Элемент .counter-box не найден.');
-    return;
-  }
+  const counterBox = document.querySelector('.counter-box');
+  if (!counterBox) return;
 
   const rect = counterBox.getBoundingClientRect();
-
-  // Рассчитываем случайные координаты внутри рамки
   const targetX = random(rect.left, rect.right);
   const targetY = random(rect.top, rect.bottom);
 
-  // Добавляем новую частицу в массив
   oreParticles.push(new Ore(width / 2, height / 2, targetX, targetY));
 }
 
@@ -114,34 +110,27 @@ class Ore {
   constructor(x, y, targetX, targetY) {
     this.x = x;
     this.y = y;
-    this.targetX = targetX; // Целевая точка
-    this.targetY = targetY; // Целевая точка
-    this.size = random(1, 48); // Размер частиц руды
-    this.speedX = (targetX - x) / 90; // Скорость движения по X
-    this.speedY = (targetY - y) / 90; // Скорость движения по Y
-    this.alpha = 255; // Прозрачность
+    this.targetX = targetX;
+    this.targetY = targetY;
+    this.size = random(1, 48);
+    this.speedX = (targetX - x) / 90;
+    this.speedY = (targetY - y) / 90;
+    this.alpha = 255;
   }
 
   move() {
-    // Движение к цели
     this.x += this.speedX;
     this.y += this.speedY;
-
-    // Уменьшение прозрачности
     this.alpha -= 5;
-
-    // Удаление частиц, если они становятся прозрачными
     if (this.alpha <= 0) {
       const index = oreParticles.indexOf(this);
-      if (index > -1) {
-        oreParticles.splice(index, 10);
-      }
+      if (index > -1) oreParticles.splice(index, 1);
     }
   }
 
   display() {
-    tint(255, this.alpha); // Добавляем прозрачность
-    image(oreImage, this.x, this.y, this.size, this.size); // Отображаем частицу
+    tint(255, this.alpha);
+    image(oreImage, this.x, this.y, this.size, this.size);
   }
 }
 
@@ -153,16 +142,14 @@ function styleFuturisticButton(button, x, y) {
   button.style('color', 'white');
   button.style('font-size', '14px');
   button.style('font-family', 'Arial, sans-serif');
-  button.style('transition', '0.3s ease-in-out'); // Анимация при наведении
-  button.position(canvas.position().x + x, canvas.position().y + height + y); // Привязка к холсту
-
-  // Добавляем hover-эффект
+  button.style('transition', '0.3s ease-in-out');
+  button.position(canvas.position().x + x, canvas.position().y + height + y);
   button.mouseOver(() => {
     button.style('background-color', 'rgba(100, 255, 200, 0.8)');
-    button.style('transform', 'scale(1.1)'); // Увеличиваем кнопку
+    button.style('transform', 'scale(1.1)';
   });
   button.mouseOut(() => {
     button.style('background-color', 'rgba(50, 200, 255, 0.8)');
-    button.style('transform', 'scale(1.0)'); // Возвращаем размер
+    button.style('transform', 'scale(1.0)';
   });
 }
