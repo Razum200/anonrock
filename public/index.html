@@ -11,7 +11,7 @@
     body {
       display: flex;
       flex-direction: column;
-      justify-content: space-between; /* Равномерное размещение */
+      justify-content: flex-start; /* Логотип сверху */
       align-items: center;
       min-height: 100vh;
       margin: 0;
@@ -43,17 +43,17 @@
 
     /* Контейнер счётчика */
     .counter-box {
-      width: 90%;
-      max-width: 400px;
+      position: absolute; /* Абсолютная привязка */
+      bottom: 0; /* Приклеить к низу монстра */
+      width: 100%; /* Растягиваем по ширине */
       height: 50px;
       display: flex;
       justify-content: center;
       align-items: center;
       background: rgba(255, 255, 255, 0.8);
-      border-radius: 15px;
+      border-radius: 0; /* Убираем закругления */
       box-shadow: 0 0 10px rgba(50, 200, 255, 0.8);
-      animation: glow 1.5s infinite;
-      margin-bottom: 20px; /* Отступ от нижнего края */
+      z-index: 10; /* Выше холста */
     }
 
     .counter-box span {
@@ -63,25 +63,13 @@
       font-family: monospace;
       text-align: center;
     }
-
-    @keyframes glow {
-      0% {
-        box-shadow: 0 0 10px rgba(50, 200, 255, 0.8);
-      }
-      50% {
-        box-shadow: 0 0 20px rgba(50, 200, 255, 1);
-      }
-      100% {
-        box-shadow: 0 0 10px rgba(50, 200, 255, 0.8);
-      }
-    }
   </style>
 </head>
 <body>
   <!-- Логотип в верхней части -->
   <img src="alpha.png" alt="Anon Rocks Alpha" class="alpha-image">
 
-  <!-- Счётчик в нижней части -->
+  <!-- Счётчик -->
   <div class="counter-box">
     <span id="counter">0.00000000</span>
   </div>
