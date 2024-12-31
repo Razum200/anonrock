@@ -72,7 +72,7 @@ function draw() {
     }
 
     // Добавление частиц
-    if (frameCount % 30 === 0) {
+    if (frameCount % 60 === 0) {
       generateOreParticles(); // Генерация новых частиц
       miningProgress = true;
       rotationSpeed = 0.3; // Начинаем анимацию кирки
@@ -109,7 +109,7 @@ class Ore {
     this.y = y;
     this.targetX = targetX; // Целевая точка
     this.targetY = targetY; // Целевая точка
-    this.size = random(12, 20); // Размер частиц руды
+    this.size = random(1, 88); // Размер частиц руды
     this.speedX = (targetX - x) / 60; // Скорость движения по X
     this.speedY = (targetY - y) / 60; // Скорость движения по Y
     this.alpha = 255; // Прозрачность
