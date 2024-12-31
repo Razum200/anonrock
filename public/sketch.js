@@ -121,7 +121,7 @@ class Ore {
     this.y += this.speedY;
 
     // Уменьшение прозрачности
-    this.alpha -= 4;
+    this.alpha -= 5;
 
     // Удаление частиц, если они становятся прозрачными
     if (this.alpha <= 0) {
