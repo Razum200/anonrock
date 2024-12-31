@@ -43,51 +43,50 @@ function setup() {
 function draw() {
   background(backgroundImage); // Рисуем фон
 
-  // Расчёт положения счётчика
+  // Привязываем счётчик к нижней части фона
   const counterBox = document.querySelector('.counter-box');
   if (counterBox) {
-    const bottomY = canvas.height - 50; // Сдвигаем счётчик к низу изображения
-    counterBox.style.top = `${bottomY}px`;
-    counterBox.style.left = `${canvas.width / 2 - counterBox.offsetWidth / 2}px`;
+    const canvasBottom = canvas.elt.getBoundingClientRect().bottom; // Нижняя часть холста
+    counterBox.style.top = `${canvasBottom}px`; // Ставим счётчик на нижнюю границу холста
   }
 
-  // Обновляем значение счётчика через DOM
+  // Обновляем значение счётчика
   if (isMining) {
     anonOreCount += orePerSecond / frameRate(); // Увеличиваем значение руды
-    document.querySelector('#counter').innerText = anonOreCount.toFixed(8); // Обновляем счётчик
+    document.querySelector('#counter').innerText = anonOreCount.toFixed(8); // Обновляем DOM
   }
 
   // Кирка работает, если добыча активна
   if (isMining) {
     push();
-    translate(width / 2, height / 2); // Перемещаем систему координат
-    rotate(pickaxeRotation); // Вращаем кирку
-    imageMode(CENTER); // Устанавливаем центр изображения
-    image(pickaxeImage, 0, 0, 150, 150); // Рисуем кирку
+    translate(width / 2, height / 2);
+    rotate(pickaxeRotation);
+    imageMode(CENTER);
+    image(pickaxeImage, 0, 0, 150, 150);
     pop();
 
     // Анимация движения кирки
     if (miningProgress) {
       pickaxeRotation += rotationSpeed;
       if (pickaxeRotation > 0) {
-        rotationSpeed = -0.1; // Обратное движение
+        rotationSpeed = -0.1;
       }
       if (pickaxeRotation <= -PI / 3) {
-        miningProgress = false; // Останавливаем анимацию
+        miningProgress = false;
         rotationSpeed = 0;
-        pickaxeRotation = -PI / 5; // Возвращаем начальный угол
+        pickaxeRotation = -PI / 5;
       }
     }
 
-    // Добавление частиц
+    // Генерация частиц
     if (frameCount % 50 === 0) {
-      generateOreParticles(); // Генерация новых частиц
+      generateOreParticles();
       miningProgress = true;
-      rotationSpeed = 0.3; // Начинаем анимацию кирки
+      rotationSpeed = 0.3;
     }
   }
 
-  // Отображение частиц
+  // Рисуем частицы
   for (let ore of oreParticles) {
     ore.move();
     ore.display();
