@@ -7,11 +7,12 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
   <script src="sketch.js" defer></script> <!-- Подключаем скрипт игры -->
   <style>
+    /* Основной стиль */
     body {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start; /* Сначала верхняя часть */
       min-height: 100vh;
       margin: 0;
       font-family: Arial, sans-serif;
@@ -34,30 +35,31 @@
       }
     }
 
+    /* Логотип вверху */
     .alpha-image {
-      position: fixed;
-      top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
+      margin-top: 10px; /* Отступ сверху */
       width: 200px; /* Установите нужный размер */
       z-index: 100;
     }
 
+    /* Контейнер счётчика */
     .counter-box {
-  position: absolute; /* Меняем с fixed на absolute */
-  bottom: 0;
-  width: 90%;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 15px;
-  box-shadow: 0 0 10px rgba(50, 200, 255, 0.8);
-  animation: glow 1.5s infinite;
-  z-index: 100;
-  padding: 10px;
-}
+      position: fixed; /* Фиксируем к нижней части окна */
+      bottom: 10px; /* Отступ снизу */
+      left: 50%;
+      transform: translateX(-50%); /* Центрируем по горизонтали */
+      width: 90%;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(50, 200, 255, 0.8);
+      animation: glow 1.5s infinite;
+      z-index: 100;
+      padding: 10px;
+    }
 
     .counter-box span {
       font-size: 24px;
@@ -81,7 +83,10 @@
   </style>
 </head>
 <body>
+  <!-- Логотип в верхней части -->
   <img src="alpha.png" alt="Anon Rocks Alpha" class="alpha-image">
+
+  <!-- Счётчик в нижней части -->
   <div class="counter-box">
     <span id="counter">0.00000000</span>
   </div>
