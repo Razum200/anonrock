@@ -11,8 +11,8 @@
     body {
       display: flex;
       flex-direction: column;
-      justify-content: flex-start; /* Логотип сверху */
       align-items: center;
+      justify-content: flex-start;
       min-height: 100vh;
       margin: 0;
       font-family: Arial, sans-serif;
@@ -35,25 +35,26 @@
       }
     }
 
-    /* Логотип вверху */
+    /* Логотип */
     .alpha-image {
-      margin-top: 10px; /* Отступ сверху */
-      width: 200px; /* Размер изображения */
+      margin-top: 10px;
+      width: 200px;
     }
 
-    /* Контейнер счётчика */
+    /* Счётчик */
     .counter-box {
-      position: absolute; /* Абсолютная привязка */
-      bottom: 0; /* Приклеить к низу монстра */
-      width: 100%; /* Растягиваем по ширине */
-      height: 50px;
+      position: absolute;
       display: flex;
       justify-content: center;
       align-items: center;
       background: rgba(255, 255, 255, 0.8);
-      border-radius: 0; /* Убираем закругления */
+      border-radius: 15px;
       box-shadow: 0 0 10px rgba(50, 200, 255, 0.8);
-      z-index: 10; /* Выше холста */
+      animation: glow 1.5s infinite;
+      z-index: 10;
+      padding: 10px;
+      height: 50px;
+      width: 90%;
     }
 
     .counter-box span {
@@ -63,14 +64,23 @@
       font-family: monospace;
       text-align: center;
     }
+
+    @keyframes glow {
+      0% {
+        box-shadow: 0 0 10px rgba(50, 200, 255, 0.8);
+      }
+      50% {
+        box-shadow: 0 0 20px rgba(50, 200, 255, 1);
+      }
+      100% {
+        box-shadow: 0 0 10px rgba(50, 200, 255, 0.8);
+      }
+    }
   </style>
 </head>
 <body>
-  <!-- Логотип в верхней части -->
   <img src="alpha.png" alt="Anon Rocks Alpha" class="alpha-image">
-
-  <!-- Счётчик -->
-  <div class="counter-box">
+  <div class="counter-box" id="counter-container">
     <span id="counter">0.00000000</span>
   </div>
 </body>
