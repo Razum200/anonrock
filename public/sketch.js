@@ -110,8 +110,8 @@ class Ore {
     this.targetX = targetX; // Целевая точка
     this.targetY = targetY; // Целевая точка
     this.size = random(1, 88); // Размер частиц руды
-    this.speedX = (targetX - x) / 60; // Скорость движения по X
-    this.speedY = (targetY - y) / 60; // Скорость движения по Y
+    this.speedX = (targetX - x) / 30; // Скорость движения по X
+    this.speedY = (targetY - y) / 30; // Скорость движения по Y
     this.alpha = 255; // Прозрачность
   }
 
@@ -127,7 +127,7 @@ class Ore {
     if (this.alpha <= 0) {
       const index = oreParticles.indexOf(this);
       if (index > -1) {
-        oreParticles.splice(index, 1);
+        oreParticles.splice(index, 10);
       }
     }
   }
