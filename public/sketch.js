@@ -27,6 +27,7 @@ function setup() {
   buyPickaxeButton.mousePressed(() => {
     if (!isMining) {
       isMining = true; // Запускаем добычу
+      miningProgress = true; // Запускаем анимацию кирки
       console.log('Кирка куплена! Добыча активирована.');
     }
   });
@@ -61,20 +62,20 @@ function draw() {
     if (miningProgress) {
       pickaxeRotation += rotationSpeed;
       if (pickaxeRotation > 0) {
-        rotationSpeed = -0.1;
+        rotationSpeed = -0.1; // Обратное движение
       }
-      if (pickaxeRotation <= -PI / 4) {
-        miningProgress = false;
+      if (pickaxeRotation <= -PI / 3) {
+        miningProgress = false; // Останавливаем анимацию
         rotationSpeed = 0;
-        pickaxeRotation = -PI / 3;
+        pickaxeRotation = -PI / 5; // Возвращаем начальный угол
       }
     }
 
     // Добавление частиц
-    if (frameCount % 60 === 0) {
+    if (frameCount % 30 === 0) {
       generateOreParticles(); // Генерация новых частиц
       miningProgress = true;
-      rotationSpeed = 0.3;
+      rotationSpeed = 0.3; // Начинаем анимацию кирки
     }
   }
 
