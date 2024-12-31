@@ -87,8 +87,12 @@ function draw() {
 }
 
 function generateOreParticles() {
-  // Получаем координаты рамки счетчика
-  const counterBox = document.querySelector('#counter-container');
+  const counterBox = document.querySelector('.counter-box'); // Используем существующий класс
+  if (!counterBox) {
+    console.error('Элемент .counter-box не найден.');
+    return;
+  }
+
   const rect = counterBox.getBoundingClientRect();
 
   // Рассчитываем случайные координаты внутри рамки
