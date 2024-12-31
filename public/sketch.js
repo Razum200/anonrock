@@ -72,7 +72,7 @@ function draw() {
     }
 
     // Добавление частиц
-    if (frameCount % 60 === 0) {
+    if (frameCount % 50 === 0) {
       generateOreParticles(); // Генерация новых частиц
       miningProgress = true;
       rotationSpeed = 0.3; // Начинаем анимацию кирки
