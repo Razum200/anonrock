@@ -6,6 +6,15 @@
   <title>Anon Rock</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
   <script src="sketch.js" defer></script> <!-- Подключаем скрипт игры -->
+  <script>
+    // Инициализируем Telegram Web App
+    window.onload = () => {
+      if (window.Telegram && Telegram.WebApp) {
+        Telegram.WebApp.ready();
+        Telegram.WebApp.expand();
+      }
+    };
+  </script>
   <style>
     body {
       display: flex;
@@ -34,64 +43,20 @@
       }
     }
 
-    h1 {
+    .alpha-image {
       position: fixed;
       top: 10px;
       left: 50%;
       transform: translateX(-50%);
-      margin: 0;
-      font-size: 28px;
-      font-weight: bold;
-      text-transform: uppercase;
-      text-align: center;
-      color: #50c8ff;
+      width: 200px; /* Установите желаемую ширину */
       z-index: 100;
-      white-space: nowrap;
-    }
-
-    .counter-box {
-      position: fixed;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 90%;
-      height: 20%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: rgba(255, 255, 255, 0.8);
-      border-radius: 15px;
-      box-shadow: 0 0 10px rgba(50, 200, 255, 0.8);
-      animation: glow 1.5s infinite;
-      z-index: 100;
-      padding: 10px;
-    }
-
-    .counter-box span {
-      font-size: 24px;
-      color: black;
-      font-weight: bold;
-      font-family: monospace;
-      text-align: center;
-    }
-
-    @keyframes glow {
-      0% {
-        box-shadow: 0 0 10px rgba(50, 200, 255, 0.8);
-      }
-      50% {
-        box-shadow: 0 0 20px rgba(50, 200, 255, 1);
-      }
-      100% {
-        box-shadow: 0 0 10px rgba(50, 200, 255, 0.8);
-      }
     }
   </style>
 </head>
 <body>
+  <img src="alpha.png" alt="Anon Rocks Alpha" class="alpha-image">
   <div class="counter-box">
     <span id="counter">0.00000000</span>
   </div>
-  <h1>АНОН РОКС АЛЬФА</h1>
 </body>
 </html>
