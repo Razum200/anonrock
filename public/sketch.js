@@ -43,6 +43,14 @@ function setup() {
 function draw() {
   background(backgroundImage); // Рисуем фон
 
+  // Расчёт положения счётчика
+  const counterBox = document.querySelector('.counter-box');
+  if (counterBox) {
+    const bottomY = canvas.height - 50; // Сдвигаем счётчик к низу изображения
+    counterBox.style.top = `${bottomY}px`;
+    counterBox.style.left = `${canvas.width / 2 - counterBox.offsetWidth / 2}px`;
+  }
+
   // Обновляем значение счётчика через DOM
   if (isMining) {
     anonOreCount += orePerSecond / frameRate(); // Увеличиваем значение руды
