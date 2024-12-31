@@ -11,8 +11,8 @@
     body {
       display: flex;
       flex-direction: column;
+      justify-content: space-between; /* Равномерное размещение */
       align-items: center;
-      justify-content: flex-start; /* Сначала верхняя часть */
       min-height: 100vh;
       margin: 0;
       font-family: Arial, sans-serif;
@@ -38,17 +38,13 @@
     /* Логотип вверху */
     .alpha-image {
       margin-top: 10px; /* Отступ сверху */
-      width: 200px; /* Установите нужный размер */
-      z-index: 100;
+      width: 200px; /* Размер изображения */
     }
 
     /* Контейнер счётчика */
     .counter-box {
-      position: fixed; /* Фиксируем к нижней части окна */
-      bottom: 10px; /* Отступ снизу */
-      left: 50%;
-      transform: translateX(-50%); /* Центрируем по горизонтали */
       width: 90%;
+      max-width: 400px;
       height: 50px;
       display: flex;
       justify-content: center;
@@ -57,8 +53,7 @@
       border-radius: 15px;
       box-shadow: 0 0 10px rgba(50, 200, 255, 0.8);
       animation: glow 1.5s infinite;
-      z-index: 100;
-      padding: 10px;
+      margin-bottom: 20px; /* Отступ от нижнего края */
     }
 
     .counter-box span {
