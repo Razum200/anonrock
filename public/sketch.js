@@ -44,9 +44,9 @@ function draw() {
 
   // Обновляем значение счётчика через DOM
   if (isMining) {
-  anonOreCount += orePerSecond / frameRate(); // Увеличиваем значение руды
-  document.querySelector('#counter').innerText = anonOreCount.toFixed(8); // Обновляем счётчик
-}
+    anonOreCount += orePerSecond / frameRate(); // Увеличиваем значение руды
+    document.querySelector('#counter').innerText = anonOreCount.toFixed(8); // Обновляем счётчик
+  }
 
   // Кирка работает, если добыча активна
   if (isMining) {
@@ -72,7 +72,7 @@ function draw() {
 
     // Добавление частиц
     if (frameCount % 60 === 0) {
-      oreParticles.push(new Ore(width / 2, height / 2)); // Генерация новых частиц
+      generateOreParticles(); // Генерация новых частиц
       miningProgress = true;
       rotationSpeed = 0.3;
     }
@@ -84,28 +84,54 @@ function draw() {
     ore.display();
   }
 }
-function drawFuturisticCounter() {
-  const x = width / 1.5; // Центр по горизонтали
-  const y = 30; // Расстояние от верхнего края
 
-  // Анимация рамки
-  strokeWeight(3);
-  stroke(50, 200, 255, sin(frameCount * 0.1) * 128 + 128); // Пульсирующий цвет
-  noFill();
-  rectMode(CENTER);
-  rect(x, y, 250, 60, 15); // Рамка с закруглёнными углами
+function generateOreParticles() {
+  // Получаем координаты рамки счетчика
+  const counterBox = document.querySelector('#counter-container');
+  const rect = counterBox.getBoundingClientRect();
 
-  // Текст "АНОНимная руда"
-  noStroke();
-  fill(255, 255, 0); // Желтый цвет
-  textSize(20); // Увеличенный размер текста
-  textAlign(CENTER, CENTER);
-  text('АНОНимная руда', x, y - 10);
+  // Рассчитываем случайные координаты внутри рамки
+  const targetX = random(rect.left, rect.right);
+  const targetY = random(rect.top, rect.bottom);
 
-  // Отображение количества руды
-  fill(50, 255, 150); // Зелёный текст
-  textSize(23); // Крупнее для выделения
-  text(`${anonOreCount.toFixed(8)}`, x, y + 20);
+  // Добавляем новую частицу в массив
+  oreParticles.push(new Ore(width / 2, height / 2, targetX, targetY));
+}
+
+class Ore {
+  constructor(x, y, targetX, targetY) {
+    this.x = x;
+    this.y = y;
+    this.targetX = targetX; // Целевая точка
+    this.targetY = targetY; // Целевая точка
+    this.size = random(6, 9); // Размер частиц руды
+    this.speedX = (targetX - x) / 60; // Скорость движения по X
+    this.speedY = (targetY - y) / 60; // Скорость движения по Y
+    this.alpha = 255; // Прозрачность
+  }
+
+  move() {
+    // Движение к цели
+    this.x += this.speedX;
+    this.y += this.speedY;
+
+    // Уменьшение прозрачности
+    this.alpha -= 4;
+
+    // Удаление частиц, если они становятся прозрачными
+    if (this.alpha <= 0) {
+      const index = oreParticles.indexOf(this);
+      if (index > -1) {
+        oreParticles.splice(index, 1);
+      }
+    }
+  }
+
+  display() {
+    fill(255, 255, 255, this.alpha);
+    noStroke();
+    ellipse(this.x, this.y, this.size);
+  }
 }
 
 function styleFuturisticButton(button, x, y) {
@@ -128,30 +154,4 @@ function styleFuturisticButton(button, x, y) {
     button.style('background-color', 'rgba(50, 200, 255, 0.8)');
     button.style('transform', 'scale(1.0)'); // Возвращаем размер
   });
-}
-
-class Ore {
-  constructor(x, y) {
-    this.x = x;
-    this.y = y;
-    this.size = random(12, 18);
-    this.speedX = random(1, 2);
-    this.speedY = random(-2, -1);
-  }
-
-  move() {
-    this.x += this.speedX;
-    this.y += this.speedY;
-
-    if (this.x > width || this.y < 0) {
-      const index = oreParticles.indexOf(this);
-      if (index > -1) {
-        oreParticles.splice(index, 1);
-      }
-    }
-  }
-
-  display() {
-    image(oreImage, this.x - this.size / 2, this.y - this.size / 2, this.size, this.size);
-  }
 }
